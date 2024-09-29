@@ -4,43 +4,49 @@ import { useState, useEffect } from 'react';
 import Navbar from '../components/navbar'; // Adjust the path if necessary
 
 function CountdownTimer() {
-  const [duration, setDuration] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(0);
-  const [isActive, setIsActive] = useState(false);
-  const [hasEnded, setHasEnded] = useState(false);
+  const [duration, setDuration] = useState<number>(0); // Duration in seconds
+  const [timeLeft, setTimeLeft] = useState<number>(0); // Time left in seconds
+  const [isActive, setIsActive] = useState<boolean>(false); // Countdown active status
+  const [hasEnded, setHasEnded] = useState<boolean>(false); // Countdown ended status
 
+  // Handle input change for duration
   const handleDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDuration(Number(e.target.value));
   };
 
+  // Set duration for the countdown
   const handleSetDuration = () => {
     setTimeLeft(duration);
-    setHasEnded(false);
+    setHasEnded(false); // Reset hasEnded when setting duration
   };
 
+  // Start the countdown
   const handleStart = () => {
     if (timeLeft > 0) setIsActive(true);
   };
 
+  // Pause the countdown
   const handlePause = () => {
     setIsActive(false);
   };
 
+  // Reset the countdown
   const handleReset = () => {
     setIsActive(false);
     setTimeLeft(0);
-    setHasEnded(false);
+    setHasEnded(false); // Reset hasEnded when resetting
   };
 
+  // Effect to manage countdown timer
   useEffect(() => {
-    let interval = null;
+    let interval: NodeJS.Timeout | null = null; // Type for the interval
 
     if (isActive && timeLeft > 0) {
-      interval = window.setInterval(() => {
+      interval = setInterval(() => {
         setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
       }, 1000);
     } else if (timeLeft === 0 && isActive) {
-      if (interval !== null) {
+      if (interval) {
         clearInterval(interval);
       }
       setIsActive(false);
@@ -53,19 +59,20 @@ function CountdownTimer() {
       });
     }
 
+    // Cleanup interval on component unmount
     return () => {
-      if (interval !== null) {
+      if (interval) {
         clearInterval(interval);
       }
     };
   }, [isActive, timeLeft]);
 
-  const formatTime = (time: number) => {
+  // Format time as MM:SS
+  const formatTime = (time: number): string => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
-};
-
+  };
 
   return (
     <div>
