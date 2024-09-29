@@ -1,8 +1,6 @@
 "use client";
-import Navbar from "../components/navbar";
 import { useState, FormEvent } from "react"; // Fixed imports
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { CloudIcon, MapPinIcon, ThermometerIcon } from "lucide-react";
 
