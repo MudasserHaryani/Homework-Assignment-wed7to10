@@ -9,7 +9,7 @@ function CountdownTimer() {
   const [isActive, setIsActive] = useState(false);
   const [hasEnded, setHasEnded] = useState(false);
 
-  const handleDurationChange = (e) => {
+  const handleDurationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDuration(Number(e.target.value));
   };
 
