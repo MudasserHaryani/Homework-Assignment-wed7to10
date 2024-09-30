@@ -26,7 +26,7 @@ export default function AboutPage() {
                 </button>
               </a>
               {/* Icons Section */}
-              <a href="https://www.youtube.com/MudasserHaryani" target="_blank" rel="noopener noreferrer" className="mx-2">
+              <a href="https://www.youtube.com/@MudasserHaryani" target="_blank" rel="noopener noreferrer" className="mx-2">
                 <AiFillYoutube className="text-red-600 hover:text-red-700 text-5xl shadow-lg hover:shadow-xl transition-shadow duration-200" />
               </a>
               <a href="https://www.linkedin.com/in/mudasser-haryani-8907b22b4?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BVACvzs4CSYeZ0esz%2FuW%2FVA%3D%3D" target="_blank" rel="noopener noreferrer" className="mx-2">

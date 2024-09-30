@@ -68,7 +68,7 @@ function CountdownTimer() {
   }, [isActive, timeLeft]);
 
   // Format time as MM:SS
-  const formatTime = (time: number): string => {
+  const formatTime = (time: number): string => { // Explicitly define 'time' as a number
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
